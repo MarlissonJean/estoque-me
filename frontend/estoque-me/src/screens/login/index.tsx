@@ -103,7 +103,7 @@ export function Login() {
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.btnSubmit}
-                    onPress={() => navigation.navigate('ProductList')}>
+                    onPress={() => navigation.navigate('CreateProduct')}>
                     <Text style={styles.submitText} >
                         Acessar
                         </Text>

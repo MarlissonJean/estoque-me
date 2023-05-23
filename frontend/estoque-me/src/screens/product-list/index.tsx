@@ -30,66 +30,57 @@ export function ProductList() {
         price: number;
         image: any;
     }
-    const renderProductItem = ({ item }: { item: Product }) => (
-        <View style={styles.productItem}>
-            <View>
-                <Text style={styles.productName}>{item.id}</Text>
-            </View>
-            <View style={styles.productDetails}>
-                <Text style={styles.productName}>{item.name}</Text>
-                <Text style={styles.productPrice}>R$ {item.price.toFixed(2)}</Text>
-            </View>
+    const renderProductItems = () => {
+      return products.map((item) => (
+        <View style={styles.productItem} key={item.id}>
+          <Image source={item.image} style={styles.productImage} />
+          <View style={styles.productDetails}>
+            <Text style={styles.productName}>{item.name}</Text>
+            <Text style={styles.productPrice}>R$ {item.price.toFixed(2)}</Text>
+          </View>
         </View>
-        );
+      ));
+    };
 
-  return (
-    <View style = {styles.background}>
-      <View style={styles.container}>
-        <FlatList
-          data={products}
-          keyExtractor={(item) => item.id}
-          renderItem={renderProductItem}
-          contentContainerStyle={styles.productList}
-          />
+    return (
+      <View style={styles.background}>
+        <View style={styles.container}>{renderProductItems()}</View>
       </View>
-    </View>    
-  );
+    );
 }
 
 const styles = StyleSheet.create({
   background: {
-    flex:1,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'gray'
+    backgroundColor: '#ffff'
   },
   container: {
     width: '90%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red'
-  },
-  productList: {
-    flex: 1,
-    width: '100%',
-    backgroundColor: 'blue'
   },
   productItem: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
     backgroundColor: '#F1F5F4',
     width: '100%',
-    height: 46,
-    marginTop: 20,
-    color: '#A0A0A0',
-    fontSize: 17,
-    borderRadius: 15,
-    padding: 10,
+    height: 80,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+  },
+  productImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 8,
+    marginRight: 10,
   },
   productDetails: {
-    flexDirection: 'row'
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   productName: {
     fontSize: 16,
@@ -101,3 +92,4 @@ const styles = StyleSheet.create({
     color: '#888',
   },
 });
+

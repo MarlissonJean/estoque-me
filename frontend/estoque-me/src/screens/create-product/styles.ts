@@ -47,9 +47,27 @@ export const styles  = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 20,
       },
-      image: {
+    image: {
         width: '100%',
         height: '100%',
         borderRadius: 70,
       },
+    btnSubmit:{
+        backgroundColor: '#213A79',
+        height: 46,
+        width: '90%',
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 39,
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 8},
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
+    },
+    submitText: {
+        color: '#FFFFFF',
+        fontSize: 20,
+        fontWeight: "600"
+    },
 })
