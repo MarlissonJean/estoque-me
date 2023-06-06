@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StackTypes } from '../../routes/app.routes';
 import { styles } from './styles';
 
 import {
@@ -15,7 +14,7 @@ import {
 
 
 export function Login() {
-    const navigation = useNavigation<StackTypes>();
+    const navigation = useNavigation();
 
     const [offset] = useState(new Animated.ValueXY({x: 0, y:80}));
     const [opacity] = useState(new Animated.Value(0));

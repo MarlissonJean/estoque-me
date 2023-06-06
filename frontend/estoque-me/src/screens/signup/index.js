@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {styles} from './Styles';
-import { StackTypes } from '../../routes/app.routes';
 
 import {
     Animated,
@@ -15,7 +14,7 @@ import {
 
 export function Signup() {
 
-    const navigation = useNavigation<StackTypes>();
+    const navigation = useNavigation();
 
 
     const [offset] = useState(new Animated.ValueXY({x: 0, y:80}));
@@ -70,7 +69,7 @@ export function Signup() {
                         Criar conta
                         </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.btnLogin} onPress={() => navigation.navigate('Home')}> 
+            <TouchableOpacity style={styles.btnLogin} onPress={() => navigation.navigate('Login')}> 
                 <Text style={styles.registerText}>Já possui conta? <Text style={styles.login}>Entrar</Text></Text>
             </TouchableOpacity>
             </Animated.View>

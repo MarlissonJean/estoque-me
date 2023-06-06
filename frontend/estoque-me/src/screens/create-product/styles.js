@@ -1,6 +1,9 @@
 import {StyleSheet} from 'react-native';
 
 export const styles  = StyleSheet.create({
+    SelectList: {
+        backgroundColor: 'red'
+    },
     background:{
         flex:1,
         alignItems: 'center',
@@ -33,10 +36,13 @@ export const styles  = StyleSheet.create({
         width: '100%',
     },
     selecType: {
-        width: '50%',
+        marginTop: 20,
+        width: '40%',
     },
     measureType: {
-        width: '40%',
+        marginTop: 20,
+        width: '50%',
+
     },
     imageContainer: {
         width: 140,

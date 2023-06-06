@@ -1,20 +1,15 @@
-import {NativeStackNavigationProp, createNativeStackNavigator} from '@react-navigation/native-stack'
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import { Signup } from '../screens/signup';
 import { Login } from '../screens/login';
 import { ProductList } from '../screens/product-list';
 import { CreateProduct } from '../screens/create-product';
+import { ProductInfo } from '../screens/product-info';
 
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
-type StackNavigation = {
-    Signup: undefined;
-    Home: undefined;
-    CreateProduct: undefined;
-    ProductList: undefined;
-}
 
-export type StackTypes = NativeStackNavigationProp<StackNavigation>;
+
 export function AppRoutes() {
     return(
         <Navigator
@@ -35,6 +30,10 @@ export function AppRoutes() {
             <Screen
                 name="ProductList"
                 component={ProductList}
+                />
+            <Screen
+                name="ProductInfo"
+                component={ProductInfo}
                 />
         </Navigator>
     );
