@@ -6,82 +6,46 @@ import { useNavigation } from '@react-navigation/native';
 const products = [
   {
     id: '1',
-    name: 'Produto 1',
-    price: 10.99,
+    title: 'Blow brand Urso 1',
+    price: 124.99,
+    description: 'Alogodão com elastano',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '2',
-    name: 'Produto 2',
-    price: 19.99,
+    title: 'Bermuda Sigo Tranquilo',
+    price: 99.90,
+    description: 'Faixa rosa',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '3',
-    name: 'Produto 3',
-    price: 15.99,
+    title: 'Baruk Vermelha Coração',
+    price: 85.00,
+    description: 'Coração preto partido',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '4',
-    name: 'Produto 2',
-    price: 19.99,
+    title: 'Lucky Jeans Urso',
+    price: 94.99,
+    description: 'Urso vermelho com corrente',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '5',
-    name: 'Produto 3',
-    price: 15.99,
+    title: 'Nboss Oversizer preta',
+    price: 89.90,
+    description: 'Minimalista preta',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '6',
-    name: 'Produto 2',
-    price: 19.99,
+    title: 'Zukman Laranjada Queimado',
+    price: 89.90,
+    description: 'Gola e mangas listradas',
     image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '7',
-    name: 'Baruk brank',
-    price: 15.99,
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '8',
-    name: 'Baruk brank',
-    price: 15.99,
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '9',
-    name: 'Baruk brank',
-    price: 15.99,
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '10',
-    name: 'Baruk brank',
-    price: 15.99,
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '11',
-    name: 'Baruk brank',
-    price: 15.99,
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '12',
-    name: 'Baruk brank',
-    price: 15.99,
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '13',
-    name: 'Baruk rosa',
-    price: 15.99,
-    image: require('../../../assets/placeholderProduct.png'),
-  },
+  }
 
 ];
 
@@ -91,17 +55,17 @@ export function ProductList() {
 
   const [search, setSearch] = useState('');
 
-  const filterSearch = products.filter( product => product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
+  const filterSearch = products.filter( product => product.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
     const renderProductItems = () => {
       return filterSearch.map((item) => (
         <TouchableOpacity 
           style={styles.productItem} 
           key={item.id} 
-          onPress = {() => navigation.navigate('ProductInfo', item)}>
+          onPress = {() => navigation.navigate('ProductInfo', {item})}>
           <Image source={item.image} style={styles.productImage} />
           <View style={styles.productDetails}>
-            <Text style={styles.productName}>{item.name}</Text>
+            <Text style={styles.producttitle}>{item.title}</Text>
             <Text style={styles.productPrice}>R$ {item.price.toFixed(2)}</Text>
           </View>
         </TouchableOpacity>

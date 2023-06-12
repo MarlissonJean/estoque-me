@@ -58,6 +58,11 @@ export function CreateProduct() {
 
     return(
     <View style= {styles.background}>
+        <View style = {styles.header}>
+            <Text>-----</Text>
+            <Image
+                source={require('../../../assets/minilogo.png')}/>
+        </View>
         <View style = {styles.container}>
             <TouchableOpacity style={styles.imageContainer} onPress={handleImageUpload}>
             {imageUri ? (

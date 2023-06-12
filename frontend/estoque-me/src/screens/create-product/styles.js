@@ -2,7 +2,16 @@ import {StyleSheet} from 'react-native';
 
 export const styles  = StyleSheet.create({
     SelectList: {
-        backgroundColor: 'red'
+        backgroundColor: 'red',
+    },
+    header:{
+        backgroundColor: 'red',
+        paddingHorizontal: 30,
+        width: '100%',
+        height: '5%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
     },
     background:{
         flex:1,

@@ -13,7 +13,7 @@ const { Navigator, Screen } = createNativeStackNavigator();
 export function AppRoutes() {
     return(
         <Navigator
-        screenOptions={{headerShown: true}}
+        screenOptions={{headerShown: false}}
         >
             <Screen
                 name="Login"
