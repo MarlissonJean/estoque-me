@@ -6,42 +6,42 @@ import { useNavigation } from '@react-navigation/native';
 const products = [
   {
     id: '1',
-    title: 'Blow brand Urso 1',
+    title: 'Blow',
     price: 124.99,
     description: 'Alogodão com elastano',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '2',
-    title: 'Bermuda Sigo Tranquilo',
+    title: 'Bermuda x',
     price: 99.90,
     description: 'Faixa rosa',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '3',
-    title: 'Baruk Vermelha Coração',
+    title: 'Baruk',
     price: 85.00,
     description: 'Coração preto partido',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '4',
-    title: 'Lucky Jeans Urso',
+    title: 'Lucky',
     price: 94.99,
     description: 'Urso vermelho com corrente',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '5',
-    title: 'Nboss Oversizer preta',
+    title: 'Nboss',
     price: 89.90,
     description: 'Minimalista preta',
     image: require('../../../assets/placeholderProduct.png'),
   },
   {
     id: '6',
-    title: 'Zukman Laranjada Queimado',
+    title: 'Zukman',
     price: 89.90,
     description: 'Gola e mangas listradas',
     image: require('../../../assets/placeholderProduct.png'),
@@ -50,7 +50,7 @@ const products = [
 ];
 
 
-export function ProductList() {
+export function ProductEdit() {
   const navigation = useNavigation();
 
   const [search, setSearch] = useState('');
@@ -74,15 +74,7 @@ export function ProductList() {
 
     return (
       <View style={styles.background}>
-        <View style={styles.searchBar}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Pesquisar produto"
-            value={search}
-            onChangeText={(e) =>setSearch(e)}
-          />
-        </View>
-        <Text style = {styles.title}> Produtos cadastrados </Text>
+        <Text style = {styles.title}> Produtos do esqtoque </Text>
         <ScrollView style={styles.container}>
           <View style={styles.itemContainer}>
             {renderProductItems()}

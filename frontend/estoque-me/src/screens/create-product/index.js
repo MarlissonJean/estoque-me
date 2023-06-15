@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react';
 import { View, TextInput, Image, TouchableOpacity, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SelectList } from 'react-native-dropdown-select-list';
-
 import * as ImagePicker from 'expo-image-picker';
 
 import { styles } from './styles';
@@ -58,11 +57,6 @@ export function CreateProduct() {
 
     return(
     <View style= {styles.background}>
-        <View style = {styles.header}>
-            <Text>-----</Text>
-            <Image
-                source={require('../../../assets/minilogo.png')}/>
-        </View>
         <View style = {styles.container}>
             <TouchableOpacity style={styles.imageContainer} onPress={handleImageUpload}>
             {imageUri ? (
@@ -74,27 +68,19 @@ export function CreateProduct() {
             <TextInput
                 style={styles.input}
                 placeholder="Código do Produto"
-                value={productCode}
-                onChange={()=>{}}
             />
             <TextInput
                 style={styles.input}
                 placeholder="Descrição"
-                value={description}
-                onChange={()=>{}}
             />
             <TextInput
                 style={styles.input}
                 placeholder="Custo"
-                value={cost}
-                onChange={()=>{}}
                 keyboardType="numeric"
             />
             <TextInput
                 style={styles.input}
                 placeholder="Valor de Venda"
-                value={sellingPrice}
-                onChange={()=>{}}
                 keyboardType="numeric"
             />
 

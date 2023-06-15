@@ -1,9 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-    ScrollView: {
-      borderColor: 'red'
-    },
     title: {
       paddingTop: 10,
       fontSize: 20,
@@ -13,11 +10,12 @@ export const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#ffff'
+      backgroundColor: '#fff'
     },
     container: {
       flex: 1,
       width: '90%',
+      height: '90%',
       position: 'relative',
       top: 0,
       zIndex: 999
@@ -58,14 +56,15 @@ export const styles = StyleSheet.create({
       fontWeight: '500'
     },
     searchBar: {
-      width: '80%',
+      width: '85%',
       alignItems: 'center',
       justifyContent: 'center',
       paddingVertical: 10,
+      marginTop: 80
     },
     searchInput: {
       width: '100%',
-      height: 40,
+      height: 45,
       borderRadius: 15,
       backgroundColor: '#F1F5F4',
       paddingHorizontal: 20,
