@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, TextInput, Image, Text, TouchableOpacity, ScrollView } from 'react-native';  
+import { View, TextInput, Image, Text, TouchableOpacity, ScrollView, Modal } from 'react-native';  
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { ActionModal}  from '../../Components/ActionModal'
 
 const products = [
   {
@@ -50,10 +52,14 @@ const products = [
 ];
 
 
-export function ProductEdit() {
+export function Registered() {
   const navigation = useNavigation();
 
   const [search, setSearch] = useState('');
+  const [visibleModal, setVisibleModal] = useState(false); 
+  const [ShowConfirmation, setShowConfirmation] = useState(false); 
+  const [selectedProduct, setSelectedProduct] = useState(null); // Estado para armazenar o produto selecionado para exclusão
+
 
   const filterSearch = products.filter( product => product.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
@@ -61,25 +67,53 @@ export function ProductEdit() {
       return filterSearch.map((item) => (
         <TouchableOpacity 
           style={styles.productItem} 
-          key={item.id} 
-          onPress = {() => navigation.navigate('ProductInfo', {item})}>
+          key={item.id}
+          activeOpacity={1}
+          >
           <Image source={item.image} style={styles.productImage} />
           <View style={styles.productDetails}>
             <Text style={styles.producttitle}>{item.title}</Text>
-            <Text style={styles.productPrice}>R$ {item.price.toFixed(2)}</Text>
+            <View style={styles.iconContainer}>
+            <TouchableOpacity onPress={() => setVisibleModal(true)}>
+              <FontAwesome name="trash" size={20} color="#e32636" />
+            </TouchableOpacity>
+          </View>
           </View>
         </TouchableOpacity>
       ));
     };
+  
+    const confirmDeleteProduct = (product) => {
+      setSelectedProduct(product);
+      setShowConfirmation(true);
+    };
+  
+    const handleDeleteProduct = () => {
+      if (selectedProduct) {
+        console.log('Excluir produto:', selectedProduct);
+        // Implemente aqui a lógica de exclusão do produto
+      }
+      setShowConfirmation(false);
+    };
+
 
     return (
       <View style={styles.background}>
-        <Text style = {styles.title}> Produtos do esqtoque </Text>
+        <Text style = {styles.title}> Produtos cadastrados </Text>
         <ScrollView style={styles.container}>
           <View style={styles.itemContainer}>
             {renderProductItems()}
           </View>
         </ScrollView>
+        <Modal
+        visible={visibleModal}
+        transparent={true}
+        onRequestClose={() => setVisibleModal(false)}
+        >
+          <ActionModal
+          handleClose={ () => setVisibleModal(false) }
+          />
+        </Modal>
       </View>
     );
 }

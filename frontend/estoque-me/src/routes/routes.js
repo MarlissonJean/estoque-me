@@ -7,7 +7,7 @@ import { CreateProduct } from '../screens/create-product';
 import { ProductInfo } from '../screens/info-product';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { ProductEdit } from '../screens/edit-product';
+import {Registered  } from '../screens/registered';
 
 
 const Stack = createNativeStackNavigator();
@@ -28,7 +28,7 @@ function HomeTab(){
                   : 'home';
               } else if (route.name === 'ProductList') {
                 iconName = focused ? 'logo-dropbox' : 'logo-dropbox';
-              } else if (route.name === 'ProductEdit') {
+              } else if (route.name === 'Registered') {
                 iconName = focused ? 'CodeSandbox' : 'CodeSandbox';
               }
               if (iconName == 'CodeSandbox') {
@@ -48,7 +48,7 @@ function HomeTab(){
             options={{headerTransparent: true, title:''}}
             />
             <Tab.Screen name='ProductList' component={ProductList} options={{title:''}}/>
-            <Tab.Screen name='ProductEdit' component={ProductEdit} options={{title:''}}/>
+            <Tab.Screen name='Registered' component={Registered} options={{title:''}}/>
         </Tab.Navigator>
     )
 }
