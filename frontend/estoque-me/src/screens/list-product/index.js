@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Image, Text, TouchableOpacity, ScrollView } from 'react-native';  
 import { styles } from './styles';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const products = [
   {
@@ -52,7 +52,9 @@ const products = [
 
 export function ProductList() {
   const navigation = useNavigation();
-
+  const route = useRoute();
+  const userEmail = route.params.userEmail;
+  console.log(userEmail)
   const [search, setSearch] = useState('');
 
   const filterSearch = products.filter( product => product.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()));

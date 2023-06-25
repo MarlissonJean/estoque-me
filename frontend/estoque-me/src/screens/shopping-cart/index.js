@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { View, Image, Text, TouchableOpacity, ScrollView, Modal } from 'react-native';  
+import { View, TextInput, Image, Text, TouchableOpacity, ScrollView, Modal } from 'react-native';  
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { ActionModal}  from '../../Components/ActionModal';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
-const add = <Ionicons name="add" size={25} color="#fff" />;
+import { ActionModal}  from '../../Components/ActionModal'
 
 const products = [
   {
@@ -55,19 +52,14 @@ const products = [
 ];
 
 
-export function Registered() {
+export function Shopping() {
   const navigation = useNavigation();
 
-  const [search, setSearch] = useState('');
   const [visibleModal, setVisibleModal] = useState(false); 
-  const [ShowConfirmation, setShowConfirmation] = useState(false); 
-  const [selectedProduct, setSelectedProduct] = useState(null); // Estado para armazenar o produto selecionado para exclusão
 
-
-  const filterSearch = products.filter( product => product.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
     const renderProductItems = () => {
-      return filterSearch.map((item) => (
+      return products.map((item) => (
         <TouchableOpacity 
           style={styles.productItem} 
           key={item.id}
@@ -85,29 +77,11 @@ export function Registered() {
         </TouchableOpacity>
       ));
     };
-  
-    const confirmDeleteProduct = (product) => {
-      setSelectedProduct(product);
-      setShowConfirmation(true);
-    };
-  
-    const handleDeleteProduct = () => {
-      if (selectedProduct) {
-        console.log('Excluir produto:', selectedProduct);
-        // Implemente aqui a lógica de exclusão do produto
-      }
-      setShowConfirmation(false);
-    };
 
 
     return (
       <View style={styles.background}>
-        <View style = {styles.registerButton}>
-        <TouchableOpacity onPress={() => navigation.navigate('Create')}>
-          {add}
-        </TouchableOpacity>
-        </View>
-        <Text style = {styles.title}> Produtos cadastrados no sistema </Text>
+        <Text style = {styles.title}> Produtos no carrinho </Text>
         <ScrollView style={styles.container}>
           <View style={styles.itemContainer}>
             {renderProductItems()}

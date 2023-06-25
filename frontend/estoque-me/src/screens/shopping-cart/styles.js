@@ -69,21 +69,4 @@ export const styles = StyleSheet.create({
       backgroundColor: '#F1F5F4',
       paddingHorizontal: 20,
     },
-    registerButton: {
-      backgroundColor: '#213A79',
-      height: 60,
-      width: 60,
-      borderRadius: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: 39,
-      shadowColor: '#171717',
-      shadowOffset: {width: -2, height: 8},
-      shadowOpacity: 0.1,
-      shadowRadius: 10,
-    },
-    registerText: {
-      color: "#FFF",
-      fontWeight: 'bold'
-    }
   });

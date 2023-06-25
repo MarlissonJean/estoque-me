@@ -5,9 +5,10 @@ import { Login } from '../screens/signin';
 import { ProductList } from '../screens/list-product';
 import { CreateProduct } from '../screens/create-product';
 import { ProductInfo } from '../screens/info-product';
+import { Registered  } from '../screens/registered';
+import { Shopping } from '../screens/shopping-cart'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {Registered  } from '../screens/registered';
 
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,8 @@ function HomeTab(){
                 iconName = focused ? 'logo-dropbox' : 'logo-dropbox';
               } else if (route.name === 'Registered') {
                 iconName = focused ? 'CodeSandbox' : 'CodeSandbox';
+              } else if(route.name === 'Shopping') {
+                iconName = focused ? 'cart' : 'cart'
               }
               if (iconName == 'CodeSandbox') {
                 return <AntDesign name={iconName} size={size} color={color}/>
@@ -40,15 +43,10 @@ function HomeTab(){
             tabBarActiveTintColor: '#213A79',
             tabBarInactiveTintColor: 'gray',
           })}
-
         >
-            <Tab.Screen 
-            name='Home' 
-            component={CreateProduct} 
-            options={{headerTransparent: true, title:''}}
-            />
             <Tab.Screen name='ProductList' component={ProductList} options={{title:''}}/>
             <Tab.Screen name='Registered' component={Registered} options={{title:''}}/>
+            <Tab.Screen name='Shopping' component={Shopping} options={{title:''}}/>
         </Tab.Navigator>
     )
 }
