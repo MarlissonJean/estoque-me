@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import axios from 'axios';
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from '../../../firebase';
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
-import data from '../../../db.json'
+import data from '../../../db.json';
+import {UserContext} from '../../UserContext';
+
 import {
     Animated,
     Text, 
@@ -29,20 +31,25 @@ export function Login() {
                 console.log(response.json())
             })
             .catch(error => console.log(error))          
-    } */
+    }*/
 
     
     const navigation = useNavigation();
 
+    const { setEmail } = useContext(UserContext);
+
     const handleJson = (userEmail) => {
-        const user = data.users.find(user => user.email === userEmail);
-        if (user) {
-            navigation.navigate('HomeTab', {userEmail})
+        const user = data.users.find(user => user.email === userEmail && user.password === password);
+        if (user)    {
+            console.log(userEmail)
+            navigation.navigate('HomeTab')
+            setEmail(userEmail);
         }else {
             console.log("user not found")
+            Alert.alert("User not found")
         }
     }
-    const [email, setEmail] = useState();
+    const [email_, setEmail_] = useState();
     const [password, setPassword] = useState();
 
     const [offset] = useState(new Animated.ValueXY({x: 0, y:80}));
@@ -52,7 +59,7 @@ export function Login() {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    const handleSignIn = () => {
+   /* const handleSignIn = () => {
         signInWithEmailAndPassword (auth, email, password)
         .then((userCredential)=>{
             console.logo("Login");
@@ -61,9 +68,8 @@ export function Login() {
         })
         .catch(error => {
             console.log(error)
-            Alert.alert(error.message)
         })
-    }
+    }*/
 
     useEffect(()=>{
         Keyboard.addListener('keyboardDidShow', keyboardDidShow);
@@ -140,8 +146,8 @@ export function Login() {
                 <TextInput style={styles.input}  
                 placeholder='E-mail'
                 autoCorrect={false}
-                onChangeText={text => setEmail(text)}
-                value={email}
+                onChangeText={text => setEmail_(text)}
+                value={email_}
                 />
                 <TextInput style={styles.input}  
                 placeholder='Senha'
@@ -154,7 +160,7 @@ export function Login() {
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.btnSubmit}
-                    onPress={() => handleJson(email)}
+                    onPress={() => handleJson(email_)}
                     >
                     <Text style={styles.submitText} >
                         Acessar

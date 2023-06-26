@@ -12,21 +12,24 @@
             "url_image": "https://urlProducImage0.png",
             "title": "produto-0",
             "cost": "40,00",
-            "value": "127,00"
+            "value": "127,00",
+            "size": "p"
           },
           {
             "product_index": 1,
             "url_image": "https://urlProducImage1.png",
             "title": "produto-1",
             "cost": "40,00",
-            "value": "121,00"
+            "value": "121,00",
+            "size": "p"
           },
           {
             "product_index": 2,
             "url_image": "https://urlProducImage2.png",
             "title": "produto-2",
             "cost": "35,00",
-            "value": "88,00"
+            "value": "88,00",
+            "size": "p"
           }
         ]
       },
@@ -34,28 +37,31 @@
         "id": "6495d911eba6677a6f6dad86",
         "index": 1,
         "email": "raquelchavez@iplax.com",
-        "password": "72c06efa-6593-4749-8af0-ea31feba5e6a",
+        "password": "1234567",
         "products": [
           {
             "product_index": 0,
             "url_image": "https://urlProducImage0.png",
             "title": "produto-0",
             "cost": "43,00",
-            "value": "84,00"
+            "value": "84,00",
+            "size": "p"
           },
           {
             "product_index": 1,
             "url_image": "https://urlProducImage1.png",
             "title": "produto-1",
             "cost": "38,00",
-            "value": "107,00"
+            "value": "107,00",
+            "size": "p"
           },
           {
             "product_index": 2,
             "url_image": "https://urlProducImage2.png",
             "title": "produto-2",
             "cost": "41,00",
-            "value": "123,00"
+            "value": "123,00",
+            "size": "p"
           }
         ]
       }

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import { View, TextInput, Image, Text, TouchableOpacity, ScrollView, Modal } from 'react-native';  
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { ActionModal}  from '../../Components/ActionModal'
+import { CartContext } from '../../CartContext';
 
 const products = [
   {
@@ -56,10 +57,11 @@ export function Shopping() {
   const navigation = useNavigation();
 
   const [visibleModal, setVisibleModal] = useState(false); 
+  const { cartItems } = useContext(CartContext);
 
 
     const renderProductItems = () => {
-      return products.map((item) => (
+      return cartItems.map((item) => (
         <TouchableOpacity 
           style={styles.productItem} 
           key={item.id}

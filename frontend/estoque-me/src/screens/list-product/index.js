@@ -1,61 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, TextInput, Image, Text, TouchableOpacity, ScrollView } from 'react-native';  
 import { styles } from './styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
-
-const products = [
-  {
-    id: '1',
-    title: 'Blow',
-    price: 124.99,
-    description: 'Alogodão com elastano',
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '2',
-    title: 'Bermuda x',
-    price: 99.90,
-    description: 'Faixa rosa',
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '3',
-    title: 'Baruk',
-    price: 85.00,
-    description: 'Coração preto partido',
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '4',
-    title: 'Lucky',
-    price: 94.99,
-    description: 'Urso vermelho com corrente',
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '5',
-    title: 'Nboss',
-    price: 89.90,
-    description: 'Minimalista preta',
-    image: require('../../../assets/placeholderProduct.png'),
-  },
-  {
-    id: '6',
-    title: 'Zukman',
-    price: 89.90,
-    description: 'Gola e mangas listradas',
-    image: require('../../../assets/placeholderProduct.png'),
-  }
-
-];
-
+import {UserContext} from '../../UserContext';
+import data from '../../../db.json';
 
 export function ProductList() {
   const navigation = useNavigation();
   const route = useRoute();
-  const userEmail = route.params.userEmail;
-  console.log(userEmail)
+
+  const { email } = useContext(UserContext);
+
   const [search, setSearch] = useState('');
+
+
+  const user = data.users.find(user => user.email === email);
+  const products = user.products;
 
   const filterSearch = products.filter( product => product.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
@@ -63,12 +23,12 @@ export function ProductList() {
       return filterSearch.map((item) => (
         <TouchableOpacity 
           style={styles.productItem} 
-          key={item.id} 
+          key={item.product_index} 
           onPress = {() => navigation.navigate('ProductInfo', {item})}>
-          <Image source={item.image} style={styles.productImage} />
+          <Image source={item.url_image} style={styles.productImage} />
           <View style={styles.productDetails}>
             <Text style={styles.producttitle}>{item.title}</Text>
-            <Text style={styles.productPrice}>R$ {item.price.toFixed(2)}</Text>
+            <Text style={styles.productPrice}>R$ {item.value}</Text>
           </View>
         </TouchableOpacity>
       ));

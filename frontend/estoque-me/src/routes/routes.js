@@ -9,6 +9,9 @@ import { Registered  } from '../screens/registered';
 import { Shopping } from '../screens/shopping-cart'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { UserProvider } from '../UserContext';
+import { CartProvider } from '../CartContext';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -16,6 +19,8 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function HomeTab(){
+
+  
     return(
         <Tab.Navigator
         
@@ -53,13 +58,15 @@ function HomeTab(){
 
 export function AppRoutes() {
     return(
+      <CartProvider>
+        <UserProvider>
         <Stack.Navigator
         initialRouteName='Login'
         >
             <Stack.Screen
                 name="Login"
                 component={Login}
-                options={{headerTransparent: true, title:'', headerShown: true}}
+                options={{headerTransparent: true, title:''}}
                 />
             <Stack.Screen
                 name="Signup"
@@ -69,7 +76,9 @@ export function AppRoutes() {
             <Stack.Screen
                 name="HomeTab"
                 component={HomeTab}
-                options={{headerTransparent: true, title:''}}
+                options={{headerTransparent: true, title:'',   
+                headerShown: false
+              }}
                 />
             <Stack.Screen
                 name="ProductInfo"
@@ -88,5 +97,7 @@ export function AppRoutes() {
             />
             
         </Stack.Navigator>
+      </UserProvider>
+      </CartProvider>
     );
 }

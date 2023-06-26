@@ -1,8 +1,10 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useContext} from 'react';
 import { View, TextInput, Image, TouchableOpacity, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SelectList } from 'react-native-dropdown-select-list';
 import * as ImagePicker from 'expo-image-picker';
+import data from '../../../db.json'
+import {UserContext} from '../../UserContext';
 
 import { styles } from './styles';
 
@@ -10,13 +12,15 @@ import { styles } from './styles';
 export function CreateProduct() {
     const navigation = useNavigation();
 
+    const { email } = useContext(UserContext);
+
     const [selectedFirst, setSelectedFirst] = useState("");
     const [selectedSecond, setSelectedSecond] = useState("");
 
     const [productCode, setProductCode] = useState('');
-    const [description, setDescription] = useState('');
+    const [title, setTitle] = useState('');
     const [cost, setCost] = useState('');
-    const [sellingPrice, setSellingPrice] = useState('');
+    const [value, setValue] = useState('');
   
     const [imageUri, setImageUri] = useState(null);
 
@@ -47,13 +51,25 @@ export function CreateProduct() {
                 alert('Permission to access camera roll is required!');
                 return;
             }
-    
-    const pickerResult = await ImagePicker.launchImageLibraryAsync();
-
-    if (!pickerResult.canceled) {
-      //setImageUri(pickerResul);
-    }
   };
+
+
+
+  const handleCreateProduct = () => {
+    let newProduct = {
+        product_index:  productCode,
+        url_image: "https://urlProducImage0.png",
+        title: title,
+        cost: cost,
+        value: value
+    }
+    const user = data.users.find(user => user.email === email);
+    const currentUser = user.products;
+    currentUser.push(newProduct);
+    console.log(data)
+    navigation.navigate('ProductList')
+
+  }
 
     return(
     <View style= {styles.background}>
@@ -68,20 +84,28 @@ export function CreateProduct() {
             <TextInput
                 style={styles.input}
                 placeholder="Código do Produto"
+                onChangeText={text => setProductCode(text)}
+                value={productCode}
             />
             <TextInput
                 style={styles.input}
-                placeholder="Descrição"
+                placeholder="Título"
+                onChangeText={text => setTitle(text)}
+                value={title}
             />
             <TextInput
                 style={styles.input}
                 placeholder="Custo"
                 keyboardType="numeric"
+                onChangeText={text => setCost(text)}
+                value={cost}
             />
             <TextInput
                 style={styles.input}
                 placeholder="Valor de Venda"
                 keyboardType="numeric"
+                onChangeText={text => setValue(text)}
+                value={value}
             />
 
             <View style= {styles.rowContainer}>
@@ -104,7 +128,7 @@ export function CreateProduct() {
                     />    
                 </View>
             </View>
-            <TouchableOpacity style={styles.btnSubmit} onPress={() => navigation.navigate('ProductList')}>
+            <TouchableOpacity style={styles.btnSubmit} onPress={() => handleCreateProduct()}>
                 <Text style={styles.submitText}>
                     Cadastrar produto
                 </Text>
