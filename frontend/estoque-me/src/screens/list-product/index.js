@@ -25,7 +25,7 @@ export function ProductList() {
           style={styles.productItem} 
           key={item.product_index} 
           onPress = {() => navigation.navigate('ProductInfo', {item})}>
-          <Image source={item.url_image} style={styles.productImage} />
+          <Image source={{uri: item.image}} style={styles.productImage} />
           <View style={styles.productDetails}>
             <Text style={styles.producttitle}>{item.title}</Text>
             <Text style={styles.productPrice}>R$ {item.value}</Text>

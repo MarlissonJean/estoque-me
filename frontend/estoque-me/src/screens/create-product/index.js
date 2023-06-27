@@ -46,26 +46,31 @@ export function CreateProduct() {
       
     const subTypeOptions = subType[selectedFirst] || [];
     const handleImageUpload = async () => {
-            const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-            if (permissionResult.granted === false) {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                aspect: [4,4],
+                quality: 1,
+                base64: true,
+                allowsEditing: true
+            }
+            );
+            if (result.granted === false) {
                 alert('Permission to access camera roll is required!');
                 return;
             }
+            setImageUri(result.assets[0].uri)
   };
 
-
-
-  const handleCreateProduct = () => {
+  const handleCreateProduct = async () => {
     let newProduct = {
         product_index:  productCode,
-        url_image: "https://urlProducImage0.png",
+        url_image: imageUri,
         title: title,
         cost: cost,
         value: value
     }
     const user = data.users.find(user => user.email === email);
     const currentUser = user.products;
-    currentUser.push(newProduct);
+    await currentUser.push(newProduct);
     console.log(data)
     navigation.navigate('ProductList')
 

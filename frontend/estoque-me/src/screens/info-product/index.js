@@ -15,7 +15,7 @@ export function ProductInfo() {
     <View style={styles.background}>
       <View style={styles.containerImage}>
         <Image style={styles.image}
-          source={image}
+          source={{uri:'https://img.ltwebstatic.com/images3_pi/2022/06/21/16557773699b3c639854cc1bc442cd3be2dfaf00c6_thumbnail_600x.jpg'}}
         />
       </View> 
       <View style={styles.container}>

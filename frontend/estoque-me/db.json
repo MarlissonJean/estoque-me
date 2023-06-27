@@ -8,7 +8,7 @@
         "password": "d877e8db-dec6-4f65-8376-aa7268131f74",
         "products": [
           {
-            "product_index": 0,
+            "product_index": 10,
             "url_image": "https://urlProducImage0.png",
             "title": "produto-0",
             "cost": "40,00",
@@ -16,7 +16,7 @@
             "size": "p"
           },
           {
-            "product_index": 1,
+            "product_index": 11,
             "url_image": "https://urlProducImage1.png",
             "title": "produto-1",
             "cost": "40,00",
@@ -24,7 +24,7 @@
             "size": "p"
           },
           {
-            "product_index": 2,
+            "product_index": 12,
             "url_image": "https://urlProducImage2.png",
             "title": "produto-2",
             "cost": "35,00",
